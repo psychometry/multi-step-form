@@ -1,0 +1,240 @@
+{
+  "PageConfigs": [
+    {
+      "step": "Your info",
+      "heading": "Personal Info",
+      "subHeading": "Please provide your name, email address, and phone number",
+      "initialData":{
+        "name": "",
+        "email": "",
+        "phone": ""
+      },
+      "formGroups":[
+        {
+            "orientation":"vertical",
+            "fields":        [
+                {
+                  "name": "name",
+                  "type": "text",
+                  "id": "",
+                  "value": "",
+                  "label": "Name",
+                  "placeholder": "e.g. Stephen King",
+                  "secondaryCaption": "This field is required",
+                  "badge": null,
+                  "icon": null,
+                  "required": true,
+                  "always": true
+                },
+                {
+                  "name": "email",
+                  "type": "email",
+                  "id": "email",
+                  "value": "",
+                  "label": "Email Address",
+                  "placeholder": "e.g. stephenking@lorem.com",
+                  "secondaryCaption": "This field is required",
+                  "badge": null,
+                  "icon": null,
+                  "required": true,
+                  "always": true
+                },
+                {
+                  "name": "phone",
+                  "type": "tel",
+                  "id": "phone",
+                  "value": "",
+                  "label": "Phone",
+                  "placeholder": "e.g. +1 234 567 890",
+                  "secondaryCaption": "This field is required",
+                  "badge": null,
+                  "icon": null,
+                  "required": true,
+                  "always": true
+                }
+              ]
+        }
+      ]
+    },
+    {
+      "step": "Select plan",
+      "heading": "Select your plan",
+      "subHeading": "You have the option of monthly or yearly billing.",
+      "initialData":{
+        "plan": "Arcade_monthly",
+        "isMonthly": true
+      },
+      "formGroups": [
+        {
+          "orientation": "horizontal",
+          "fields": [
+            {
+              "name": "plan",
+              "type": "radio",
+              "id": "Arcade_monthly",
+              "value": "Arcade_monthly",
+              "label": "Arcade",
+              "secondaryCaption": "$9/mo",
+              "badge": null,
+              "icon": "/icon-arcade.svg",
+              "required": true
+            },
+            {
+              "name": "plan",
+              "type": "radio",
+              "id": "Advanced_monthly",
+              "value": "Advanced_monthly",
+              "label": "Advanced",
+              "secondaryCaption": "$12/mo",
+              "badge": null,
+              "icon": "/icon-advanced.svg",
+              "required": true
+            },
+            {
+              "name": "plan",
+              "type": "radio",
+              "id": "Pro_monthly",
+              "value": "Pro_monthly",
+              "label": "Pro",
+              "secondaryCaption": "$15/mo",
+              "badge": null,
+              "icon": "/icon-pro.svg",
+              "required": true
+            },
+            {
+              "name": "plan",
+              "type": "radio",
+              "id": "Arcade_yearly",
+              "value": "Arcade_yearly",
+              "label": "Arcade",
+              "secondaryCaption": "$90/yr",
+              "badge": "2 months free",
+              "icon": "/icon-arcade.svg",
+              "required": true
+            },
+            {
+              "name": "plan",
+              "type": "radio",
+              "id": "Advanced_yearly",
+              "value": "Advanced_yearly",
+              "label": "Advanced",
+              "secondaryCaption": "$120/yr",
+              "badge": "2 months free",
+              "icon": "/icon-advanced.svg",
+              "required": true
+            },
+            {
+              "name": "plan",
+              "type": "radio",
+              "id": "Pro_yearly",
+              "value": "Pro_yearly",
+              "label": "Pro",
+              "secondaryCaption": "$150/yr",
+              "badge": "2 months free",
+              "icon": "/icon-pro.svg",
+              "required": true
+            }
+          ]
+        },
+        {
+          "orientation": "vertical",
+          "fields": [
+            {
+              "name": "isMonthly",
+              "type": "toggle",
+              "id": "",
+              "value": "isMonthly",
+              "label": "Monthly",
+              "secondaryCaption": "Yearly",
+              "required": true,
+              "always": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "step": "Add-ons",
+      "heading": "Pick add-ons",
+      "subHeading": "Add-ons help enhance your gaming experience.",
+      "initialData":{
+        "online_service": false,
+        "larger_storage": false,
+        "customizable_profile": false
+      },
+      "formGroups":[
+        {
+            "orientation":"vertical",
+            "fields":        [
+                {
+                  "name": "online_service",
+                  "type": "checkbox",
+                  "id": "online_service_monthly",
+                  "value": "online_service_monthly",
+                  "label": "Online service",
+                  "secondaryCaption": "Access to multiplayer games",
+                  "badge": "+$1/mo",
+                  "required": false
+                },
+                {
+                  "name": "larger_storage",
+                  "type": "checkbox",
+                  "id": "larger_storage_monthly",
+                  "value": "larger_storage_monthly",
+                  "label": "Larger storage",
+                  "secondaryCaption": "Extra 1TB of cloud save",
+                  "badge": "+$2/mo",
+                  "required": false
+                },
+                {
+                  "name": "customizable_profile",
+                  "type": "checkbox",
+                  "id": "customizable_profile_monthly",
+                  "value": "customizable_profile_monthly",
+                  "label": "Customizable Profile",
+                  "secondaryCaption": "Custom theme on your profile",
+                  "badge": "+$2/mo",
+                  "required": false
+                },
+                {
+                  "name": "online_service",
+                  "type": "checkbox",
+                  "id": "online_service_yearly",
+                  "value": "online_service_yearly",
+                  "label": "Online service",
+                  "secondaryCaption": "Access to multiplayer games",
+                  "badge": "+$10/yr",
+                  "required": false
+                },
+                {
+                  "name": "larger_storage",
+                  "type": "checkbox",
+                  "id": "larger_storage_yearly",
+                  "value": "larger_storage_yearly",
+                  "label": "Larger storage",
+                  "secondaryCaption": "Extra 1TB of cloud save",
+                  "badge": "+$20/yr",
+                  "required": false
+                },
+                {
+                  "name": "customizable_profile",
+                  "type": "checkbox",
+                  "id": "customizable_profile_yearl",
+                  "value": "customizable_profile_yearly",
+                  "label": "Customizable Profile",
+                  "secondaryCaption": "Custom theme on your profile",
+                  "badge": "+$20/yr",
+                  "required": false
+                }
+              ]
+        }
+      ]
+    },
+    {
+      "step": "Summary",
+      "heading": "Finishing up",
+      "subHeading": "Double-check everything looks OK before confirming.",
+      "formGroups": []
+    }
+  ]
+}

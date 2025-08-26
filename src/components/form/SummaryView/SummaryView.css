@@ -1,0 +1,114 @@
+.summary-container {
+  background-color: hsl(231, 100%, 99%);
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.summary-plan {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 24px;
+  border-bottom: 1px solid hsl(229, 24%, 87%);
+  margin-bottom: 16px;
+}
+
+.summary-plan-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-plan-name {
+  color: hsl(213, 96%, 18%);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.summary-change-link {
+  background: none;
+  border: none;
+  color: hsl(231, 11%, 63%);
+  text-decoration: underline;
+  padding: 0;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.summary-change-link:hover {
+  color: hsl(243, 100%, 62%);
+}
+
+.summary-plan-price {
+  color: hsl(213, 96%, 18%);
+  font-weight: 700;
+}
+
+.summary-addons {
+  margin-bottom: 24px;
+}
+
+.summary-addon-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.summary-addon-name {
+  color: hsl(231, 11%, 63%);
+  font-size: 14px;
+}
+
+.summary-addon-price {
+  color: hsl(213, 96%, 18%);
+  font-size: 14px;
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 0;
+}
+
+.summary-total-label {
+  color: hsl(231, 11%, 63%);
+  font-size: 14px;
+}
+
+.summary-total-price {
+  color: hsl(243, 100%, 62%);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+/* Thank you view styles */
+.thank-you-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+  height: 100%;
+}
+
+.thank-you-icon {
+  margin-bottom: 24px;
+  width: 80px;
+  height: 80px;
+}
+
+.thank-you-title {
+  color: hsl(213, 96%, 18%);
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.thank-you-message {
+  color: hsl(231, 11%, 63%);
+  font-size: 16px;
+  line-height: 1.5;
+  max-width: 450px;
+}
