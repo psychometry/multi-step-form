@@ -50,3 +50,7 @@ pre, form, fieldset, input, textarea, p, blockquote, th, td {
 input{
   color-scheme: light;;
 }
+
+body{
+  background-color: white;
+}
