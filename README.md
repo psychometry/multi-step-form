@@ -29,7 +29,7 @@ A responsive multi-step form built with React and Vite.
 3. **Build for production:**
 	```
 	npm run build
-	```
+	```g
 
 ## Project Structure
 

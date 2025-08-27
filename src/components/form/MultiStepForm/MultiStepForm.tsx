@@ -3,12 +3,16 @@ import "./MultiStepForm.css";
 import { FormPage, DynamicFormData } from "../../../types/index";
 import FormStep from "../FormStep/FormStep";
 import FormBody from "../FormBody/FormBody";
+import PlaceholderMultiStepForm from "../PlaceHolderMultiStepForm/PlaceholderMultiStepForm";
 
 const MultiStepForm = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [formData, setFormData] = useState<DynamicFormData>({});
   const [currentPageIndex, setCurrentPageIndex] = useState<number>(0);
   const [formPages, setFormPages] = useState<FormPage[]>([]);
-  const [validationState, setValidationState] = useState<Record<string, boolean>>({});
+  const [validationState, setValidationState] = useState<
+    Record<string, boolean>
+  >({});
 
   useEffect(() => {
     fetch("/PageConfig.json")
@@ -40,6 +44,7 @@ const MultiStepForm = () => {
           }
         });
         setFormData(initialData);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error loading form configuration:", error);
@@ -50,21 +55,23 @@ const MultiStepForm = () => {
     // Validate required fields before advancing
     const currentValidationState = validateCurrentPage();
     setValidationState(currentValidationState);
-    
+
     // Check if all fields are valid
-    const allValid = Object.values(currentValidationState).every(isValid => isValid !== false);
-    
+    const allValid = Object.values(currentValidationState).every(
+      (isValid) => isValid !== false
+    );
+
     if (allValid && currentPageIndex < formPages.length - 1) {
       setCurrentPageIndex(currentPageIndex + 1);
       setValidationState({});
     }
   };
-  
+
   // Handle field-level validation
   const handleFieldValidation = (fieldName: string, isValid: boolean) => {
-    setValidationState(prevState => ({
+    setValidationState((prevState) => ({
       ...prevState,
-      [fieldName]: isValid
+      [fieldName]: isValid,
     }));
   };
 
@@ -76,9 +83,11 @@ const MultiStepForm = () => {
 
   const handleDataChange = (fieldName: string, value: any) => {
     if (formData.hasOwnProperty(fieldName)) {
-      let changedData = {[fieldName]: value};
+      let changedData = { [fieldName]: value };
       if (fieldName === "isMonthly") {
-        let newPlan= value? (formData.plan as string).replace("yearly", "monthly"): (formData.plan as string).replace("monthly", "yearly");
+        let newPlan = value
+          ? (formData.plan as string).replace("yearly", "monthly")
+          : (formData.plan as string).replace("monthly", "yearly");
         changedData = { plan: newPlan, ...changedData };
       }
       setFormData({ ...formData, ...changedData });
@@ -87,32 +96,38 @@ const MultiStepForm = () => {
   function validateCurrentPage() {
     const newValidationState: Record<string, boolean> = {};
 
-    const fields = formPages[currentPageIndex].formGroups.flatMap(group => group.fields);
+    const fields = formPages[currentPageIndex].formGroups.flatMap(
+      (group) => group.fields
+    );
 
-    fields.forEach(field => {
+    fields.forEach((field) => {
       const value = formData[field.name];
 
       if (field.required) {
-        if (field.type === 'text' || field.type === 'email' || field.type === 'tel') {
-          if (!value || value === '') {
+        if (
+          field.type === "text" ||
+          field.type === "email" ||
+          field.type === "tel"
+        ) {
+          if (!value || value === "") {
             newValidationState[field.name] = false;
             return;
           }
-        } else if (field.type === 'radio' && (!value || value === '')) {
+        } else if (field.type === "radio" && (!value || value === "")) {
           newValidationState[field.name] = false;
           return;
         }
       }
 
-      if (field.name === 'name' && value) {
+      if (field.name === "name" && value) {
         newValidationState[field.name] = validateName(value as string);
-      } else if (field.name === 'email' && value) {
+      } else if (field.name === "email" && value) {
         newValidationState[field.name] = validateEmail(value as string);
-      } else if (field.name === 'phone' && value) {
+      } else if (field.name === "phone" && value) {
         newValidationState[field.name] = validatePhone(value as string);
       }
     });
-    
+
     return newValidationState;
   }
   function validateName(name: string) {
@@ -126,15 +141,19 @@ const MultiStepForm = () => {
   function validatePhone(phone: string) {
     const phoneRegex = /^\d{10}$/;
     return phoneRegex.test(phone);
-  } 
+  }
 
-  return (
+  return isLoading ? (
+    <div className="form-container">
+      <PlaceholderMultiStepForm />
+    </div>
+  ) : (
     <div className="form-container">
       {formPages.length > 0 && (
         <>
-          <FormStep 
-            currentIndex={currentPageIndex} 
-            steps={formPages.map((page) => page.step)} 
+          <FormStep
+            currentIndex={currentPageIndex}
+            steps={formPages.map((page) => page.step)}
           />
           <FormBody
             title={formPages[currentPageIndex].heading}
